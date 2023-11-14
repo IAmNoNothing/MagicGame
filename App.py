@@ -6,6 +6,7 @@ import json
 
 from ECS.Player import Player
 from engine.Camera import Camera
+from engine.inventory import Inventory
 
 
 class App(HasSurface):
@@ -22,6 +23,7 @@ class App(HasSurface):
         self._camera = Camera(self)
         self.ground_renderer = GroundRenderer(self)
         self.player = Player(self)
+        self.inventory = Inventory(self)
 
         self.keys = pg.key.get_pressed()
         self.m_pos = pg.mouse.get_pos()
@@ -63,3 +65,4 @@ class App(HasSurface):
         self.screen.fill((0, 0, 0))
         self.ground_renderer.draw()
         self.player.draw()
+        self.inventory.draw()
