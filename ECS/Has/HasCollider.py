@@ -13,7 +13,7 @@ class Collider(pg.Rect):
 
 class HasCollider:
 
-    def __init__(self, collider: Collider = None):
+    def __init__(self, collider: pg.Rect = None):
         self._collider = Collider((0, 0), (0, 0)) if collider is None else collider
 
     @property

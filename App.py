@@ -4,6 +4,7 @@ from ECS.GroundRenderer import GroundRenderer
 from ECS.Has.HasSurface import HasSurface
 import json
 
+from ECS.Player import Player
 from engine.Camera import Camera
 
 
@@ -20,6 +21,7 @@ class App(HasSurface):
         self.delta = 0  # delta time
         self._camera = Camera(self)
         self.ground_renderer = GroundRenderer(self)
+        self.player = Player(self)
 
         self.keys = pg.key.get_pressed()
         self.m_pos = pg.mouse.get_pos()
@@ -55,7 +57,9 @@ class App(HasSurface):
         pg.display.flip()
         self.ground_renderer.update()
         pg.display.set_caption(f'FPS: {self.clock.get_fps():.2f}')
+        self.player.update()
 
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.ground_renderer.draw()
+        self.player.draw()
